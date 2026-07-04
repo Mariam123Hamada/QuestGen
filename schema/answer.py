@@ -1,12 +1,9 @@
 from pydantic import BaseModel
 
 
-class ProjectCreate(BaseModel):
-    name: str
-
-
-class ProjectResponse(ProjectCreate):
+class AnswerResponse(BaseModel):
     id: int
+    answer: str
 
     model_config = {
         "from_attributes": True
