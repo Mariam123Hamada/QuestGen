@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File
-from controllers.constarins import ConstraintType , Constraint
-from models.Response_model import UploadResponse
+from controllers.constarins import ConstraintType , Constraint , UploadResponse
+
 
 upload_router = APIRouter()
 
