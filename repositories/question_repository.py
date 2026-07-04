@@ -14,6 +14,8 @@ class QuestionRepository:
 
         db_question = Question(
             question=question.question,
+            difficulty=question.difficulty,
+            question_type=question.question_type,
             document_id=question.document_id,
         )
 
