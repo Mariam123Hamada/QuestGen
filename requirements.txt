@@ -2,3 +2,6 @@ fastapi
 langchain
 uvicorn
 pydantic 
+sqlalchemy
+asyncpg
+alembic
