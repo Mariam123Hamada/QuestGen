@@ -5,10 +5,10 @@ from controllers.constarins import ConstraintType , Constraint , UploadResponse
 upload_router = APIRouter()
 
 @upload_router.get("/home")
-def home():
+async def home():
     return {"message": "Welcome to the upload route!"}
 @upload_router.post("/upload", response_model=UploadResponse)
-def upload_file(file:UploadFile = File(...)):
+async def upload_file(file: UploadFile = File(...)):
     if file.filename.split(".")[-1] not in [constraint.value for constraint in ConstraintType]:
         return UploadResponse(message="File type not supported", status_code=400)
     print("File Size", file.size)

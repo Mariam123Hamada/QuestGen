@@ -1,7 +1,9 @@
-from sqlalchemy.ext.asyncio import AsyncSession 
-from sqlalchemy.orm import async_sessionmaker
-from db.database import engine
 
+from db.database import engine
+from sqlalchemy.ext.asyncio import (
+    AsyncSession,
+    async_sessionmaker,
+)
 
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,

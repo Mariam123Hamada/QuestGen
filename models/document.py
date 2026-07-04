@@ -1,5 +1,6 @@
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import String , Integer , FoereignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship 
+from sqlalchemy import ForeignKey
+from sqlalchemy import String , Integer 
 from db.base import Base
 
 class Document(Base):
@@ -11,7 +12,7 @@ class Document(Base):
     file_size: Mapped[int] = mapped_column(Integer)
     
     project_id: Mapped[int] = mapped_column(
-        FoereignKey("projects.id")
+        ForeignKey("projects.id")
     )
     project = relationship("Project", back_populates="documents")
     questions = relationship(

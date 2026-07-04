@@ -1,5 +1,6 @@
-from sqlalchemy import ForeignKey, Text
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Text
+from sqlalchemy.orm import Mapped, mapped_column, relationship 
+from sqlalchemy import ForeignKey
 
 from db.base import Base
 

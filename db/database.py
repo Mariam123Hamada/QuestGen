@@ -1,9 +1,9 @@
 from sqlalchemy.ext.asyncio import create_async_engine
-from utils.helper import env_data
+from utils.config import settings
 
 
 engine = create_async_engine(
-    env_data.DATABASE_URL,
+    settings.DATABASE_URL,
     echo=True,
     future=True,
 )
