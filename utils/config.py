@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     POSTGRES_PORT: int
     GEMINI_KEY: str
     GEMINI_MODEL: str
+    GROQ_API_KEY: str
+    GROQ_MODEL: str
+    LLM_PROVIDER: str = "groq"
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8"
