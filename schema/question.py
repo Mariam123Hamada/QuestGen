@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import List
 
 
 class QuestionCreate(BaseModel):
@@ -6,6 +7,8 @@ class QuestionCreate(BaseModel):
     difficulty: str
     question_type: str
     document_id: int
+    choices: List[str]
+
 
 
 class QuestionResponse(BaseModel):
@@ -14,6 +17,7 @@ class QuestionResponse(BaseModel):
     difficulty: str
     question_type: str
     document_id: int
+    choices: List[str]
 
     model_config = {
         "from_attributes": True
