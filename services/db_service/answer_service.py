@@ -13,6 +13,9 @@ class AnswerService:
         db: AsyncSession,
         answer_create: AnswerCreate,
     ):
+        print("*="*50)
+        print("Answer Services Created")
+        print("*="*50)
         return await self.answer_repository.create(
             db,
             answer_create,
