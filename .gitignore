@@ -4,5 +4,4 @@
 # Ada Library Information
 *.ali
 .env
-venv/
-__pycache__/
+*.o*.ali.envvenv/__pycache__/*.pyc
