@@ -16,6 +16,7 @@ class QuestionRepository:
             question=question.question,
             difficulty=question.difficulty,
             question_type=question.question_type,
+            choices=question.choices,
             document_id=question.document_id,
         )
 

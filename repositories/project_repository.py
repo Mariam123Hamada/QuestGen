@@ -1,8 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from models.project import Project
-from schemas.project import ProjectCreate
-
+from schema.project import ProjectCreate
 
 class ProjectRepository:
 
