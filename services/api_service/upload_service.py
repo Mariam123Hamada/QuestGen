@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-
+from utils.config import settings
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from services.db_service.project_service import ProjectService
@@ -10,10 +10,7 @@ from services.db_service.answer_service import AnswerService
 
 from services.llm_service.chunk_service import ChunkService
 from services.extractors.text_extraction_service import TextExtractionService
-from services.llm_service.question_generator_service import (
-    QuestionGeneratorService,
-)
-
+from services.llm_service.generators.generator_factory import GeneratorFactory
 from schema.project import ProjectCreate
 from schema.document import DocumentCreate
 from schema.question import QuestionCreate
@@ -39,7 +36,9 @@ class UploadService:
 
         self.text_service = TextExtractionService()
         self.chunk_service = ChunkService()
-        self.question_generator = QuestionGeneratorService()
+        self.question_generator = GeneratorFactory.get_generator(
+                settings.LLM_PROVIDER
+            )
 
     async def upload_file(self, file):
 
@@ -97,27 +96,6 @@ class UploadService:
                 question_type="multiple_choice",
                 document_id=document.id,
             )
-
-            # for item in generated_questions:
-
-            #     question = await self.question_service.create_question(
-            #         self.db,
-            #         QuestionCreate(
-            #             question=item["question"],
-            #             difficulty=item["difficulty"],
-            #             question_type=item["question_type"],
-            #             choices=item["choices"],
-            #             document_id=document.id,
-            #         ),
-            #     )
-
-            #     await self.answer_service.create_answer(
-            #         self.db,
-            #         AnswerCreate(
-            #             answer=item["answer"],
-            #             question_id=question.id,
-            #         ),
-            #     )
             result = await self.question_generator.generate_question(
                 text=chunk,
                 difficulty="Easy",
@@ -135,7 +113,7 @@ class UploadService:
                     document_id=result["document_id"],
                 ),
             )
-
+            print("This is the line before the answer created")
             await self.answer_service.create_answer(
                 self.db,
                 AnswerCreate(
