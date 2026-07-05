@@ -7,7 +7,8 @@ class Settings(BaseSettings):
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
     POSTGRES_PORT: int
-
+    GEMINI_KEY: str
+    GEMINI_MODEL: str
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8"
