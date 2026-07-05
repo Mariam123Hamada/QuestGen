@@ -3,7 +3,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey
 
 from db.base import Base
-
+from sqlalchemy import JSON
 
 class Question(Base):
     __tablename__ = "questions"
@@ -15,6 +15,7 @@ class Question(Base):
     difficulty: Mapped[str] = mapped_column(String(20))
 
     question_type: Mapped[str] = mapped_column(String(30))
+    choices: Mapped[list[str]] = mapped_column(JSON)
 
     document_id: Mapped[int] = mapped_column(
         ForeignKey("documents.id")
