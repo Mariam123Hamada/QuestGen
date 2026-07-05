@@ -11,3 +11,4 @@ pypdf
 google-genai
 python-multipart
 langchain-text-splitters
+groq
