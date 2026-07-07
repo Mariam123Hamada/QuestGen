@@ -1,0 +1,25 @@
+name: Check Alembic Migrations
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-migrations:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  
+
+      - name: Check Alembic Migrations and Generate SQL
+        uses: OpenMindUA/alembic-actions/review@v1
+        with:
+          dialect: "postgresql"
+          alembic_ini: "alembic.ini"
+          migration_path: "migrations"
